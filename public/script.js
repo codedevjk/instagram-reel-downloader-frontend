@@ -45,8 +45,8 @@ document.getElementById('pasteFromClipboard').addEventListener('click', () => {
         document.body.removeChild(link);
         
         alert('Download started! Check your downloads folder.');
-      } else {
-        alert(`Error: ${data.message}`);
+    } else {
+        alert(`Error: ${data.message}\n\nNote: Instagram frequently updates their structure. For best results, consider using official Instagram APIs.`);
       }
     } catch (error) {
       console.error('Error:', error);
