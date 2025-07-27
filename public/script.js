@@ -14,7 +14,7 @@ document.getElementById('pasteFromClipboard').addEventListener('click', () => {
     }
   
     // Replace with your Render backend URL
-    const backendUrl = 'http://localhost:5000/download';
+    const backendUrl = 'https://instagram-reel-downloader-d8jy.onrender.com/download';
   
     // Send the URL to the backend
     fetch(backendUrl, {
