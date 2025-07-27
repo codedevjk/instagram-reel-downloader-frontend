@@ -1,12 +1,4 @@
-document.getElementById('pasteFromClipboard').addEventListener('click', () => {
-    navigator.clipboard.readText().then(text => {
-      document.getElementById('url').value = text;
-    }).catch(err => {
-      console.error('Failed to read clipboard contents: ', err);
-    });
-  });
-  
-  document.getElementById('downloadButton').addEventListener('click', async () => {
+document.getElementById('downloadButton').addEventListener('click', async () => {
     const url = document.getElementById('url').value;
     if (!url) {
       alert('Please enter a valid Instagram reel URL.');
@@ -35,17 +27,36 @@ document.getElementById('pasteFromClipboard').addEventListener('click', () => {
       const data = await response.json();
   
       if (data.success) {
-        // Create a temporary link to trigger download
-        const link = document.createElement('a');
-        link.href = data.downloadUrl;
-        link.download = 'instagram-reel.mp4'; // This suggests filename to browser
-        link.target = '_blank';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        // Show success message
-        alert('Download started! Check your browser\'s downloads folder.');
+        // Method 1: Force download using Blob (Recommended)
+        try {
+          // Fetch the video as blob
+          const videoResponse = await fetch(data.downloadUrl);
+          const blob = await videoResponse.blob();
+          
+          // Create download link
+          const blobUrl = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = blobUrl;
+          link.download = 'instagram-reel.mp4'; // Force download with this filename
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          
+          // Clean up
+          window.URL.revokeObjectURL(blobUrl);
+          
+          alert('Download completed! Check your downloads folder.');
+        } catch (blobError) {
+          // Fallback method if Blob approach fails
+          console.log('Blob download failed, using fallback method');
+          const link = document.createElement('a');
+          link.href = data.downloadUrl;
+          link.download = 'instagram-reel.mp4';
+          link.target = '_self'; // Open in same tab instead of new tab
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
       } else {
         alert(`Error: ${data.message}`);
       }
