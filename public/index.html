@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Reel Downloader</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gradient-to-r from-red-500 to-purple-500">
+    <div class="flex justify-center items-center h-screen">
+      <div class="bg-white p-6 rounded shadow-lg w-96">
+        <h1 class="text-center text-2xl font-bold mb-4">
+          Instagram Reel Downloader
+        </h1>
+        <p class="text-center text-gray-600 mb-6">
+          Download Instagram reels directly to your device
+        </p>
+
+        <!-- Form -->
+        <form id="reelForm" class="mb-4">
+          <label for="url" class="block mb-2">Reel URL</label>
+          <div class="relative">
+            <input
+              type="text"
+              id="url"
+              name="url"
+              placeholder="https://www.instagram.com/reel/Cexample123/"
+              class="w-full px-4 py-2 border rounded focus:outline-none focus:border-indigo-500"
+            />
+            <button
+              type="button"
+              id="pasteFromClipboard"
+              class="absolute top-1/2 transform -translate-y-1/2 right-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1" />
+                <path
+                  d="M4 16a1 1 0 00-1-1H2a1 1 0 00-1 1v1h14V7a1 1 0 00-1-1H8l-4 4zM14 8a1 1 0 000 2h.01L14 11h3v5a1 1 0 001 1h2a1 1 0 001-1v-5h3a1 1 0 000-2h-.01L14 8z"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
+
+        <!-- Download Button -->
+        <button
+          id="downloadButton"
+          class="w-full bg-gradient-to-r from-indigo-500 to-pink-500 text-white px-4 py-2 rounded hover:from-indigo-600 hover:to-pink-600 transition duration-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 inline mr-2"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              d="M8 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zM2 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 2 10.5zm0 4.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm12-7a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-5z"
+            />
+          </svg>
+          Download Reel
+        </button>
+
+        <!-- Instructions -->
+        <div class="mt-6 bg-blue-100 p-4 rounded shadow-inner">
+          <h2 class="text-lg font-bold mb-2">How to use</h2>
+          <ul class="list-disc pl-5">
+            <li>Copy the URL of the Instagram reel you want to download.</li>
+            <li>Paste the URL in the input field above.</li>
+            <li>Click "Download Reel" to process.</li>
+            <li>Preview and save the reel to your device.</li>
+          </ul>
+        </div>
+
+        <!-- Note -->
+        <p class="text-center text-gray-500 mt-4">
+          Note: This is a frontend demonstration. Actual downloading requires
+          server-side implementation.
+        </p>
+      </div>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+    "name": "instagram-reel-downloader-frontend",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "dev": "npx serve public",
+      "build": "echo 'Frontend build complete'"
+    },
+    "devDependencies": {
+      "serve": "^14.2.0"
+    }
+  }
