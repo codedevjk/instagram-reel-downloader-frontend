@@ -20,7 +20,7 @@ document.getElementById('pasteFromClipboard').addEventListener('click', () => {
     button.disabled = true;
   
     try {
-      // Your Render backend URL
+      // Use your deployed Render backend URL
       const backendUrl = 'https://instagram-reel-downloader-d8jy.onrender.com/download';
   
       // Send the URL to the backend
@@ -38,15 +38,16 @@ document.getElementById('pasteFromClipboard').addEventListener('click', () => {
         // Create a temporary link to trigger download
         const link = document.createElement('a');
         link.href = data.downloadUrl;
-        link.download = 'instagram-reel.mp4';
+        link.download = 'instagram-reel.mp4'; // This suggests filename to browser
         link.target = '_blank';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         
-        alert('Download started! Check your downloads folder.');
-    } else {
-        alert(`Error: ${data.message}\n\nNote: Instagram frequently updates their structure. For best results, consider using official Instagram APIs.`);
+        // Show success message
+        alert('Download started! Check your browser\'s downloads folder.');
+      } else {
+        alert(`Error: ${data.message}`);
       }
     } catch (error) {
       console.error('Error:', error);
